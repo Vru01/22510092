@@ -1,0 +1,42 @@
+-- Create Emp table
+CREATE TABLE Emp (
+    Eno INT PRIMARY KEY,
+    Ename VARCHAR(100),
+    Eaddress VARCHAR(255),
+    Ephoto VARCHAR(255) -- Path or URL to the employee photo
+);
+
+-- Create Company table with Eno as foreign key
+CREATE TABLE Company (
+    Eno INT,
+    Age INT,
+    Designation VARCHAR(100),
+    FOREIGN KEY (Eno) REFERENCES Emp(Eno)
+);
+
+-- Insert dummy data into Emp
+INSERT INTO Emp (Eno, Ename, Eaddress, Ephoto) VALUES
+(1, 'Alice', 'New York', 'photos/alice.jpg'),
+(2, 'Bob', 'California', 'photos/bob.jpg'),
+(3, 'Charlie', 'Texas', 'photos/charlie.jpg');
+
+-- Insert dummy data into Company
+INSERT INTO Company (Eno, Age, Designation) VALUES
+(1, 30, 'Manager'),
+(2, 28, 'Developer'),
+(3, 35, 'Analyst');
+
+-- Query 1: Ename and Designation for all employees
+SELECT Emp.Ename, Company.Designation
+FROM Emp
+JOIN Company ON Emp.Eno = Company.Eno;
+
+-- Query 2: Eno and Age for all employees
+SELECT Emp.Eno, Company.Age
+FROM Emp
+JOIN Company ON Emp.Eno = Company.Eno;
+
+-- Query 3: Ename and Ephoto for a particular employee (e.g., Eno = 2)
+SELECT Ename, Ephoto
+FROM Emp
+WHERE Eno = 2;
