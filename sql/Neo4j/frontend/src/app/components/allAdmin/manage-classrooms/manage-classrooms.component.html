@@ -1,0 +1,65 @@
+<div class="login-container">
+    <h2>{{ editingClassroom ? 'Update Classroom' : 'Add Classroom' }}</h2>
+  
+    <form [formGroup]="classroomForm" (ngSubmit)="addOrUpdateClassroom()">
+      <!-- Classroom Name Input -->
+      <div class="form-group">
+        <label for="building">Building :</label>
+        <input type="text" id="building" formControlName="building" class="form-control" placeholder="Enter Classroom building" [readonly]="editingClassroom"/>
+        <small class="error" *ngIf="building?.invalid && building?.touched">
+          Classroom name is required.
+        </small>
+      </div>
+  
+      <!-- Building Input -->
+      <div class="form-group">
+        <label for="roon_number">Room_number:</label>
+        <input type="text" id="room_number" formControlName="room_number" class="form-control" placeholder="Enter roon_number" [readonly]="editingClassroom"/>
+        <small class="error" *ngIf="room_number?.invalid && room_number?.touched">
+          Room  number is required.
+        </small>
+      </div>
+  
+      <!-- capacity Input -->
+      <div class="form-group">
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" formControlName="capacity" class="form-control" placeholder="Enter capacity"/>
+        <small class="error" *ngIf="capacity?.invalid && capacity?.touched">
+          capacity must be a valid number.
+        </small>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="classroomForm.invalid" class="btn-submit">
+        {{ editingClassroom ? 'Update Classroom' : 'Add Classroom' }}
+      </button>
+    </form>
+  </div>
+  
+  <!-- Classroom Management Table -->
+  <div class="manage-Classrooms">
+    <h2>Manage Classrooms</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Room_number</th>
+          <th>Building</th>
+          <th>capacity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Classroom of Classrooms">
+          <td>{{ Classroom.building }}</td>
+          <td>{{ Classroom.room_number }}</td>
+          <td>{{ Classroom.capacity}}</td>
+          <td>
+            <button (click)="editClassroom(Classroom)">Edit</button>
+            <button (click)="deleteClassroom(Classroom.building,Classroom.room_number)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

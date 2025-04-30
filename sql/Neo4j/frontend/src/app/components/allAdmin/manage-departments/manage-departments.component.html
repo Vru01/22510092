@@ -1,0 +1,73 @@
+<div class="login-container">
+  <h2>{{ editingDepartment ? 'Update Department' : 'Add Department' }}</h2>
+
+  <form [formGroup]="departmentForm" (ngSubmit)="addOrUpdateDepartment()">
+    <!-- Department Name Input -->
+    <div class="form-group">
+      <label for="id">Department ID:</label>
+      <input type="text" id="id" formControlName="id" class="form-control" placeholder="Enter Department id: example 11,12..etc..." [readonly]="editingDepartment" />
+      <small class="error" *ngIf="id?.invalid && id?.touched">
+        Department Id is required.
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="dept_name">Department Name:</label>
+      <input type="text" id="dept_name" formControlName="dept_name" class="form-control" placeholder="Enter Department Name" [readonly]="editingDepartment"/>
+      <small class="error" *ngIf="dept_name?.invalid && dept_name?.touched">
+        Department name is required.
+      </small>
+    </div>
+
+    <!-- Building Input -->
+    <div class="form-group">
+      <label for="building">Building:</label>
+      <input type="text" id="building" formControlName="building" class="form-control" placeholder="Enter Building Name"/>
+      <small class="error" *ngIf="building?.invalid && building?.touched">
+        Building name is required.
+      </small>
+    </div>
+
+    <!-- Budget Input -->
+    <div class="form-group">
+      <label for="budget">Budget:</label>
+      <input type="number" id="budget" formControlName="budget" class="form-control" placeholder="Enter Budget"/>
+      <small class="error" *ngIf="budget?.invalid && budget?.touched">
+        Budget must be a valid number.
+      </small>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="departmentForm.invalid" class="btn-submit">
+      {{ editingDepartment ? 'Update Department' : 'Add Department' }}
+    </button>
+  </form>
+</div>
+
+<!-- Department Management Table -->
+<div class="manage-departments">
+  <h2>Manage Departments</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Department ID</th>
+        <th>Department Name</th>
+        <th>Building</th>
+        <th>Budget</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let department of departments">
+        <td>{{ department.id }}</td>
+        <td>{{ department.dept_name }}</td>
+        <td>{{ department.building }}</td>
+        <td>{{ department.budget | currency }}</td>
+        <td>
+          <button (click)="editDepartment(department)">Edit</button>
+          <button (click)="deleteDepartment(department.dept_name)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

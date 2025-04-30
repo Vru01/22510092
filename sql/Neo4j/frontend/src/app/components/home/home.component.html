@@ -1,0 +1,29 @@
+<div class="login-container">
+    <h2> Login</h2>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- User ID Input -->
+      <div class="form-group">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" formControlName="userId" class="form-control" placeholder="Enter your User ID" />
+  
+        <small class="error" *ngIf="userId?.invalid && userId?.touched">
+          User ID is required (min 4 characters).
+        </small>
+      </div>
+  
+      <!-- Password Input -->
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter your password" />
+  
+        <small class="error" *ngIf="password?.invalid && password?.touched">
+          Password is required (min 6 characters).
+        </small>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="loginForm.invalid" class="btn-submit">Login</button>
+    </form>
+  </div>
+  

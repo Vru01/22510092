@@ -1,0 +1,27 @@
+<div class="login-container">
+
+    <h2> Classification of Paper...</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="userId">Paper Id:</label>
+            <input type="text" id="userId" formControlName="userId" class="form-control"
+                placeholder="enter paper id:" />
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid" class="btn-submit">Classification</button>
+
+    </form>
+
+    <div *ngIf="responce && loginForm.get('userId')?.value " class="result-message classification">
+        <h3>Classification Result</h3>
+        <p><strong>Paper ID:</strong> {{ responce.paperId }}</p>
+      
+        <div *ngFor="let cls of responce.classifications">
+          <p><strong>Full Classification:</strong> {{ formatClassification(cls) }}</p>
+        </div>
+    </div>
+
+
+</div>

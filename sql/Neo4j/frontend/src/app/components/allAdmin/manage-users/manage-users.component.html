@@ -1,0 +1,64 @@
+<!-- <div class="login-container">
+  <h2> Add User</h2>
+  
+  <form [formGroup]="addUserForm" (ngSubmit)="addOrUpdateUser()"> -->
+    <!-- User ID Input -->
+    <!-- <div class="form-group">
+      <label for="userId">User ID:</label>
+      <input type="text" id="userId" formControlName="userId" class="form-control" placeholder="Enter  User ID "  />
+
+      <small class="error" *ngIf="userId?.invalid && userId?.touched">
+        User ID is required (min 4 characters).
+      </small>
+    </div> -->
+
+    <!-- Password Input -->
+    <!-- <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter password" />
+
+      <small class="error" *ngIf="password?.invalid && password?.touched">
+        Password is required (min 6 characters).
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="name" id="name" formControlName="name" class="form-control" placeholder="Enter name" />
+
+      <small class="error" *ngIf="name?.invalid && name?.touched">
+        Name is required and should be at least 6 characters.
+      </small>
+      
+    </div> -->
+
+    <!-- Submit Button -->
+    <!-- <button type="submit" [disabled]="addUserForm.invalid" class="btn-submit">addOrUpdateUser</button>
+  </form>
+</div> -->
+
+<div class="manage-users">
+    <h2>Manage Users</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Role</th>
+          <!-- <th>Actions</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.ID }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.role }}</td>
+          <!-- <td>
+            <button (click)="editUser(user)">Edit</button>
+            <button (click)="deleteUserById(user.ID)">Delete</button>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

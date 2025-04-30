@@ -1,0 +1,31 @@
+<mat-sidenav-container class="sidenav-container">
+    <!-- Sidebar Navigation -->
+    <mat-sidenav #sidenav [mode]="'side'" [(opened)]="isSidebarOpen" class="sidenav">
+      <mat-nav-list>
+        <h3 class="menu-title">Menu</h3>
+        <a mat-list-item routerLink="/courses">Courses</a>
+        <a mat-list-item routerLink="/assignments"> Assignments</a>
+        <a mat-list-item routerLink="/grades">Grades</a>
+        <a mat-list-item routerLink="/profile">Profile</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <!-- Main Content -->
+    <mat-sidenav-content>
+      <!-- Navbar -->
+      <mat-toolbar color="primary" class="toolbar">
+        <button mat-icon-button (click)="toggleSidebar()">
+          <mat-icon>{{ isSidebarOpen ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+        <span class="title">MIS</span>
+        <span class="spacer"></span>
+        <span class="username"> {{ username }} </span>
+      </mat-toolbar>
+  
+      <!-- Dashboard Content -->
+      <div class="dashboard-container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

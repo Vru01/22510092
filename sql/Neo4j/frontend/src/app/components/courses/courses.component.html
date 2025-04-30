@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Manage Courses</h2>
+    <button (click)="addCourse()">Add New Course</button>
+  
+    <table>
+      <tr>
+        <th>Course ID</th>
+        <th>Title</th>
+        <th>Department</th>
+        <th>Credits</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let course of courses">
+        <td>{{ course.course_id }}</td>
+        <td>{{ course.title }}</td>
+        <td>{{ course.dept_name }}</td>
+        <td>{{ course.credits }}</td>
+        <td>
+          <button (click)="editCourse(course)">Edit</button>
+          <button (click)="deleteCourse(course.course_id)">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  

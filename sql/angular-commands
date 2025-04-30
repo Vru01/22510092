@@ -1,0 +1,18 @@
+1) Install Angular CLI:
+	npm install -g @angular/cli
+
+2) Create new project:
+	ng new project-name
+
+3) Create component:
+	ng g c component-name 
+    ng g c component-name --standalone
+
+4) Create service:
+	ng g s service-name
+
+5) Create module:
+	ng g m module-name
+
+6) Run app:
+	ng serve --open

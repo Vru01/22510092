@@ -1,0 +1,29 @@
+<div class="manage-sections">
+    <h2>Manage Sections</h2>
+    <button (click)="addSection()">Add Section</button>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Semester</th>
+          <th>Room</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let section of sections">
+          <td>{{ section.id }}</td>
+          <td>{{ section.name }}</td>
+          <td>{{ section.semester }}</td>
+          <td>{{ section.room }}</td>
+          <td>
+            <button (click)="editSection(section.id)">Edit</button>
+            <button (click)="deleteSection(section.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

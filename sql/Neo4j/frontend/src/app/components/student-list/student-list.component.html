@@ -1,0 +1,43 @@
+<div class="container">
+    <h2>Student Information</h2>
+  
+    <div *ngIf="isLoading" class="loading">Loading...</div>
+  
+    <table *ngIf="!isLoading && students.length > 0" class="student-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Department</th>
+          <!-- <th>Total Credits</th>
+          <th>Course ID</th>
+          <th>Course Title</th>
+          <th>Semester</th>
+          <th>Year</th>
+          <th>Grade</th> -->
+          <th>Department Building</th>
+          <th>Department Budget</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.student_id }}</td>
+          <td>{{ student.student_name }}</td>
+          <td>{{ student.student_department }}</td>
+          <!-- <td>{{ student.total_credits }}</td>
+          <td>{{ student.course_id }}</td>
+          <td>{{ student.course_title }}</td>
+          <td>{{ student.semester }}</td>
+          <td>{{ student.year }}</td>
+          <td>{{ student.grade }}</td> -->
+          <td>{{ student.department_building }}</td>
+          <td>{{ student.department_budget }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="!isLoading && students.length === 0" class="no-data">
+      No students found.
+    </div>
+  </div>
+  

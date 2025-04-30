@@ -1,0 +1,20 @@
+<div class="grades-container">
+    <h2>Manage Student Grades</h2>
+  
+    <form [formGroup]="gradeForm" (ngSubmit)="updateGrades()">
+      <div *ngFor="let grade of gradeControls.controls; let i = index" class="grade-item">
+        <p><strong>{{ students[i].name }}</strong> ({{ students[i].ID }})</p>
+        <p>Course: {{ students[i].course_id }} - Section {{ students[i].sec_id }}</p>
+  
+        <label for="grade">Grade:</label>
+        <select [formControlName]="'grade'">
+          <option *ngFor="let g of ['A', 'B', 'C', 'D', 'F']" [value]="g">{{ g }}</option>
+        </select>
+      </div>
+  
+      <button type="submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Updating...' : 'Update Grades' }}
+      </button>
+    </form>
+  </div>
+  

@@ -1,0 +1,51 @@
+<div class="register-container">
+    <h2>Register New Teacher</h2>
+  
+    <form [formGroup]="studentForm" (ngSubmit)="registerStudent()">
+      <div class="form-group">
+        <label for="ID">Teacher ID</label>
+        <input id="ID" type="text" formControlName="ID" placeholder="Enter Teacher ID" />
+        <small *ngIf="studentForm.controls['ID'].invalid && studentForm.controls['ID'].touched">
+          ID must be at least 3 characters.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="name">Teacher Name</label>
+        <input id="name" type="text" formControlName="name" placeholder="Enter Teacher name" />
+        <small *ngIf="studentForm.controls['name'].invalid && studentForm.controls['name'].touched">
+          Name should only contain letters.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="dept_name">Dept_Name</label>
+        <select id="dept_name" formControlName="dept_name" class="form-control">
+          <option *ngFor="let dept of departments" [value]="dept.dept_name">{{ dept.dept_name }}</option>
+        </select>
+        <small *ngIf="studentForm.controls['dept_name'].invalid && studentForm.controls['dept_name'].touched">
+          Please select a valid department.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="salary">Salary</label>
+        <input id="salary" type="text" formControlName="salary" placeholder="Enter salary" />
+        <small *ngIf="studentForm.controls['ID'].invalid && studentForm.controls['ID'].touched">
+          ID must be at least 3 characters.
+        </small>
+      </div>
+      
+      <div class="form-group">
+        <label>
+          <input type="checkbox" formControlName="isDepartmentHead" />
+          Is Department Head
+        </label>
+      </div>
+      
+      <button type="submit" [disabled]="studentForm.invalid || isSubmitting">
+        {{ isSubmitting ? 'Registering...' : 'Register Teacher' }}
+      </button>
+    </form>
+  </div>
+  

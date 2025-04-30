@@ -1,0 +1,8 @@
+mkdir express-app
+cd express-app
+
+npm init -y
+
+npm install express
+
+

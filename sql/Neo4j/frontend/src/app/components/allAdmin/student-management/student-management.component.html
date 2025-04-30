@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Student Management System</h2>
+  
+    <div class="tabs">
+      <button [class.active]="activeTab === 'allStudents'" (click)="setActiveTab('allStudents')"> Students</button>
+
+      <button [class.active]="activeTab === 'register'" (click)="setActiveTab('register')">Register Student</button>
+      <button [class.active]="activeTab === 'enroll'" (click)="setActiveTab('enroll')">Enroll/Remove Student</button>
+      <!-- <button [class.active]="activeTab === 'grades'" (click)="setActiveTab('grades')">Manage Grades</button> -->
+
+    </div>
+  
+    <div class="content">
+      <app-student-list *ngIf="activeTab === 'allStudents'"></app-student-list>
+      <app-register-student *ngIf="activeTab === 'register'" [setActiveTab]="setActiveTab"></app-register-student>
+      <enroll-student *ngIf="activeTab === 'enroll'"></enroll-student>
+      <!-- <app-manage-grades *ngIf="activeTab === 'grades'"></app-manage-grades> -->
+    </div>
+  </div>
+  

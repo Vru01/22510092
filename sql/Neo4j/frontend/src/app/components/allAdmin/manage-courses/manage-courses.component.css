@@ -1,0 +1,118 @@
+/* General styles */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+  text-align: center;
+  color: #333;
+}
+
+/* Course Form */
+.course-form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+select.form-input {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background-color: #357ab7;
+}
+
+.secondary-btn {
+  background-color: #d6dde0;
+  color: #333;
+}
+
+.secondary-btn:hover {
+  background-color: #c4d1d9;
+}
+
+.course-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn {
+  background-color: #f5a623;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #d0021b;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background-color: #e07b18;
+}
+
+.delete-btn:hover {
+  background-color: #c32f27;
+}
+
+/* Course List */
+.course-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.course-item {
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-item:hover {
+  background-color: #f0f0f0;
+}

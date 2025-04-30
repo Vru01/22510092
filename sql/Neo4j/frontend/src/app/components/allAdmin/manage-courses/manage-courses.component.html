@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Manage Courses</h2>
+  
+  <!-- Course Form -->
+  <form [formGroup]="courseForm" (ngSubmit)="addCourse()" class="course-form">
+
+    <div class="form-group">
+      <label for="courseCode">Course Code:</label>
+      <input id="courseCode" formControlName="courseCode" type="text" class="form-input" />
+    </div>
+    
+    <div class="form-group">
+      <label for="courseName">Course Name:</label>
+      <input id="courseName" formControlName="courseName" type="text" class="form-input" />
+    </div>
+
+    
+
+    <div class="form-group">
+      <label for="dept_name">Department Name:</label>
+      <select id="dept_name" formControlName="dept_name" class="form-input">
+        <option *ngFor="let dept of departments" [value]="dept.dept_name">{{ dept.dept_name }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="credits">Course Credits:</label>
+      <input id="credits" formControlName="credits" type="number" class="form-input" />
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn primary-btn">{{ isEditing ? 'Update Course' : 'Add Course' }}</button>
+      <!-- <button type="button" (click)="resetForm()" class="btn secondary-btn">Reset</button> -->
+    </div>
+  </form>
+
+  <!-- Course List -->
+  <h3>Existing Courses</h3>
+  <ul class="course-list">
+    <li *ngFor="let course of courses" class="course-item">
+      {{ course.title }} ({{ course.course_id }}) - {{ course.dept_name }}
+      <div class="course-actions">
+        <button (click)="editCourse(course)" class="btn edit-btn">Edit</button>
+        <button (click)="deleteCourse(course.course_id)" class="btn delete-btn">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>

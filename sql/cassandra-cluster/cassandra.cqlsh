@@ -1,0 +1,144 @@
+CREATE KEYSPACE IF NOT EXISTS my_keyspace
+WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor' : 3};
+
+USE my_keyspace;
+
+
+CREATE TABLE IF NOT EXISTS users (
+    id UUID PRIMARY KEY,
+    name TEXT,
+    age INT,
+    email TEXT
+);
+
+-- 4. List all Keyspaces
+DESCRIBE KEYSPACES;
+
+-- 5. List all Tables in the current Keyspace
+DESCRIBE TABLES;
+
+-- 6. Describe a Table
+DESCRIBE TABLE users;
+
+-- 7. Insert Data into Table
+INSERT INTO users (id, name, age, email) 
+VALUES (uuid(), 'John Doe', 25, 'johndoe@example.com');
+
+INSERT INTO users (id, name, age, email) 
+VALUES (uuid(), 'Jane Smith', 30, 'janesmith@example.com');
+
+-- 8. Select Data from a Table
+SELECT * FROM users;
+
+-- 9. Select Specific Columns from a Table
+SELECT name, email FROM users;
+
+-- 10. Update Data in a Table
+UPDATE users 
+SET age = 26 
+WHERE id = <UUID_of_the_user>;
+
+-- 11. Delete Data from a Table
+DELETE FROM users 
+WHERE id = <UUID_of_the_user>;
+
+-- 12. Drop a Table
+DROP TABLE IF EXISTS users;
+
+-- 13. Drop a Keyspace
+DROP KEYSPACE IF EXISTS my_keyspace;
+
+-- 14. Count the Number of Rows in a Table
+SELECT COUNT(*) FROM users;
+
+-- 15. Add a New Column to a Table
+ALTER TABLE users ADD address TEXT;
+
+-- 16. Drop a Column from a Table
+ALTER TABLE users DROP address;
+
+-- 17. Create an Index on a Column
+CREATE INDEX IF NOT EXISTS email_index 
+ON users (email);
+
+-- 18. Drop an Index
+DROP INDEX IF EXISTS email_index;
+
+-- 19. Check Cluster Status
+DESCRIBE CLUSTER;
+
+-- 20. Check Node Status (Using nodetool)
+-- To be run on the Docker container shell
+nodetool status;
+
+-- 21. Get All Keyspaces in the Cluster
+SELECT * FROM system_schema.keyspaces;
+
+-- 22. Check the Cluster’s Configuration
+SELECT * FROM system.local;
+
+-- 23. List All Datacenters in the Cluster
+SELECT * FROM system.local;
+
+-- 24. Alter the Replication Factor of a Keyspace
+ALTER KEYSPACE my_keyspace WITH REPLICATION = {'class' : 'NetworkTopologyStrategy', 'datacenter1' : 3, 'datacenter2' : 2};
+
+-- 25. Truncate a Table (Delete all data from the table)
+TRUNCATE users;
+
+-- 26. Create a Table with Time-to-Live (TTL)
+CREATE TABLE IF NOT EXISTS sessions (
+    session_id UUID PRIMARY KEY,
+    user_id UUID,
+    data TEXT
+) WITH default_time_to_live = 3600;  -- Data will expire after 1 hour
+
+-- 27. Select Data with a TTL Query
+SELECT * FROM sessions WHERE session_id = <UUID>;
+
+-- 28. Create a Batch Query
+BEGIN BATCH
+INSERT INTO users (id, name, age, email) VALUES (uuid(), 'Alice', 29, 'alice@example.com');
+INSERT INTO users (id, name, age, email) VALUES (uuid(), 'Bob', 31, 'bob@example.com');
+APPLY BATCH;
+
+-- 29. Use IF EXISTS to Check for Data Existence Before Inserting
+INSERT INTO users (id, name, age, email)
+VALUES (uuid(), 'Charlie', 22, 'charlie@example.com')
+IF NOT EXISTS;
+
+-- 30. Add a Primary Key to a Table
+-- Note: Primary key can be added only when creating a table, it cannot be modified afterward.
+CREATE TABLE IF NOT EXISTS orders (
+    order_id UUID PRIMARY KEY,
+    customer_id UUID,
+    order_date TIMESTAMP
+);
+
+-- 31. Create a Table with Composite Primary Key
+CREATE TABLE IF NOT EXISTS order_items (
+    order_id UUID,
+    item_id UUID,
+    quantity INT,
+    PRIMARY KEY (order_id, item_id)
+);
+
+-- 32. Use ALLOW FILTERING for Queries with WHERE Clauses
+SELECT * FROM users WHERE age = 30 ALLOW FILTERING;
+
+-- 33. Create a Materialized View (MV)
+CREATE MATERIALIZED VIEW IF NOT EXISTS users_by_age AS 
+SELECT * FROM users 
+PRIMARY KEY (age, id);
+
+-- 34. Drop a Materialized View
+DROP MATERIALIZED VIEW IF EXISTS users_by_age;
+
+-- 35. Use SELECT DISTINCT to Retrieve Unique Values
+SELECT DISTINCT age FROM users;
+
+-- 36. Use GROUP BY with Aggregations
+SELECT age, COUNT(*) FROM users GROUP BY age;
+
+-- 37. Check Cassandra Version
+SELECT release_version FROM system.local;

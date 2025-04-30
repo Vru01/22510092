@@ -1,0 +1,24 @@
+<div class="dashboard-container">
+    <aside class="sidebar">
+      <h2>Navbar</h2>
+      <nav>
+        <ul>
+          <li (click)="setActiveSection('citation')">Citation</li>
+          <li (click)="setActiveSection('Classification')">Classification</li>
+          <li (click)="setActiveSection('customQuery')">Custom Query</li>
+        </ul>
+      </nav>
+    </aside>
+  
+    <main class="main-content">
+      <ng-container *ngIf="activeSection === 'citation'">
+        <app-citation></app-citation>
+      </ng-container>
+      <ng-container *ngIf="activeSection === 'Classification'">
+        <app-classification></app-classification>
+      </ng-container>
+      <ng-container *ngIf="activeSection === 'customQuery'">
+        <app-custom-query></app-custom-query>
+      </ng-container>
+    </main>
+  </div>

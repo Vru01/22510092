@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Teacher Management System</h2>
+  
+    <div class="tabs">
+      <button [class.active]="activeTab === 'register'" (click)="setActiveTab('register')">Register Teacher</button>
+      <button [class.active]="activeTab === 'assign'" (click)="setActiveTab('assign')">Assign Course</button>
+      <!-- <button [class.active]="activeTab === 'grades'" (click)="setActiveTab('grades')">Manage Grades</button> -->
+    </div>
+  
+    <div class="content">
+      <app-register-teacher *ngIf="activeTab === 'register'" [setActiveTab]="setActiveTab"></app-register-teacher>
+      <app-assign-courses *ngIf="activeTab === 'assign'"></app-assign-courses>
+      <!-- <app-manage-grades *ngIf="activeTab === 'grades'"></app-manage-grades> -->
+       <!-- <app-assign-courses></app-assign-courses> -->
+    </div>
+  </div>
+  

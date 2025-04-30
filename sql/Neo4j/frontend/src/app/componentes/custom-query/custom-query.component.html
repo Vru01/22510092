@@ -1,0 +1,18 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="login-container">
+        <h2>Custom Query...</h2>
+
+        <div class="cypher-query-group">
+            <label for="userId">Custom Cypher Query:</label>
+            <textarea id="userId" formControlName="userId" class="form-control cypher-textarea"
+                placeholder="Enter your custom Cypher query here..." rows="6"></textarea>
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid" class="btn-submit">Query</button>
+    </div>
+
+    <div *ngIf="queryResponse && loginForm.get('userId')?.value" class="result-output">
+        <h3>Query Results</h3>
+        <pre>{{ queryResponse | json }}</pre>
+    </div>
+</form>

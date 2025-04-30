@@ -1,0 +1,35 @@
+<div class="login-container">
+    <h2> Check Citation..</h2>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+      <div class="form-group">
+        <label for="userId">Citing paper id:</label>
+        <input type="text" id="userId" formControlName="userId" class="form-control" placeholder="Citing paper id:" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Citated paper id:</label>
+        <input type="text" id="password" formControlName="password" class="form-control" placeholder="Citated paper id:" />
+      </div>
+  
+      <button type="submit" [disabled]="loginForm.invalid" class="btn-submit">Check</button>
+    </form>
+
+
+    <!-- RESULT BLOCK -->
+  <div *ngIf="response && loginForm.get('userId')?.value && loginForm.get('password')?.value " class="result-message" [ngClass]="{ 'positive': response.cites, 'negative': !response.cites }">
+    <p>
+      Does paper <strong>{{ loginForm.value.userId }}</strong> cite paper
+      <strong>{{ loginForm.value.password }}</strong>?<br />
+      <span *ngIf="response.cites">
+        ✅ Yes, found a citation path within {{ response.count }} level(s).
+      </span>
+      <span *ngIf="!response.cites">
+        ❌ No direct or indirect citation found, even after {{ response.count }} level(s).
+      </span>
+    </p>
+  </div>
+
+  </div>
+  

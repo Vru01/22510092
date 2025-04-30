@@ -1,0 +1,45 @@
+<!-- admin-dashboard.component.html -->
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Teacher Panel</h2>
+    <nav>
+      <ul>
+        <li (click)="setActiveSection('courses')">Course-Management</li>
+        <!-- <li (click)="setActiveSection('departments')">Department-Management</li> -->
+        <li (click)="setActiveSection('students')">Student-Management</li>
+        <!-- <li (click)="setActiveSection('teachers')">Teacher-Management</li>
+        <li (click)="setActiveSection('classrooms')">Classrooms-Management</li>
+        <li (click)="setActiveSection('reports')">Generate Reports</li>  -->
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <ng-container *ngIf="activeSection === 'users'">
+      <app-manage-users></app-manage-users>
+    </ng-container>
+    <ng-container *ngIf="activeSection === 'departments'">
+      <app-manage-departments></app-manage-departments>
+    </ng-container>
+    <ng-container *ngIf="activeSection === 'courses'">
+      <app-manage-courses></app-manage-courses>
+    </ng-container>
+    <ng-container *ngIf="activeSection === 'teachers'">
+      <app-teacher-management></app-teacher-management>
+    </ng-container>
+    <ng-container *ngIf="activeSection === 'classrooms'">
+      <app-manage-classrooms></app-manage-classrooms>
+    </ng-container>
+    <ng-container *ngIf="activeSection === 'sections'">
+      <app-manage-sections></app-manage-sections>
+    </ng-container>
+    <ng-container *ngIf="activeSection === 'reports'">
+      <app-manage-reports></app-manage-reports>
+    </ng-container>
+    <ng-container *ngIf="activeSection === 'students'">
+      <app-student-management></app-student-management>
+    </ng-container>
+  </main>
+</div>
