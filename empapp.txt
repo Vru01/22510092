@@ -1,0 +1,203 @@
+### Angular + Node.js + MySQL Full Stack Setup
+
+---
+
+## 🔧 Backend: Node.js + Express + MySQL
+
+1. **Initialize project**
+```bash
+mkdir backend && cd backend
+npm init -y
+npm install express mysql2 cors dotenv
+```
+
+2. **File structure:**
+```
+backend/
+├── .env
+├── db.js
+├── server.js
+├── routes/
+│   └── employees.js
+```
+
+3. **.env**
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=yourdatabase
+PORT=5000
+```
+
+4. **db.js**
+```js
+const mysql = require('mysql2');
+require('dotenv').config();
+
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
+});
+
+db.connect(err => {
+  if (err) throw err;
+  console.log('Connected to MySQL');
+});
+
+module.exports = db;
+```
+
+5. **server.js**
+```js
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
+const empRoutes = require('./routes/employees');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/employees', empRoutes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```
+
+6. **routes/employees.js**
+```js
+const express = require('express');
+const router = express.Router();
+const db = require('../db');
+
+// Get all employee names and designations
+router.get('/designation', (req, res) => {
+  db.query(`SELECT Emp.Ename, Company.Designation FROM Emp JOIN Company ON Emp.Eno = Company.Eno`,
+    (err, result) => {
+      if (err) return res.status(500).send(err);
+      res.json(result);
+    });
+});
+
+// Get Eno and age
+router.get('/age', (req, res) => {
+  db.query(`SELECT Emp.Eno, Company.Age FROM Emp JOIN Company ON Emp.Eno = Company.Eno`,
+    (err, result) => {
+      if (err) return res.status(500).send(err);
+      res.json(result);
+    });
+});
+
+// Get employee name and photo by Eno
+router.get('/:eno', (req, res) => {
+  const eno = req.params.eno;
+  db.query(`SELECT Ename, Ephoto FROM Emp WHERE Eno = ?`, [eno],
+    (err, result) => {
+      if (err) return res.status(500).send(err);
+      res.json(result[0]);
+    });
+});
+
+module.exports = router;
+```
+
+---
+
+## 🧑‍🎨 Frontend: Angular
+
+1. **Create Angular App**
+```bash
+ng new employee-app
+cd employee-app
+npm install axios
+```
+
+2. **Generate Component**
+```bash
+ng generate component employee
+```
+
+3. **employee.component.ts**
+```ts
+import { Component, OnInit } from '@angular/core';
+import axios from 'axios';
+
+@Component({
+  selector: 'app-employee',
+  templateUrl: './employee.component.html',
+})
+export class EmployeeComponent implements OnInit {
+  designations: any[] = [];
+  ages: any[] = [];
+  selectedEmp: any;
+  eno: number = 0;
+
+  ngOnInit() {
+    this.getDesignations();
+    this.getAges();
+  }
+
+  getDesignations() {
+    axios.get('http://localhost:5000/api/employees/designation')
+      .then(res => this.designations = res.data);
+  }
+
+  getAges() {
+    axios.get('http://localhost:5000/api/employees/age')
+      .then(res => this.ages = res.data);
+  }
+
+  getEmployeeByEno() {
+    axios.get(`http://localhost:5000/api/employees/${this.eno}`)
+      .then(res => this.selectedEmp = res.data);
+  }
+}
+```
+
+4. **employee.component.html**
+```html
+<h2>Employee Designations</h2>
+<ul>
+  <li *ngFor="let emp of designations">{{ emp.Ename }} - {{ emp.Designation }}</li>
+</ul>
+
+<h2>Employee Ages</h2>
+<ul>
+  <li *ngFor="let emp of ages">Eno: {{ emp.Eno }}, Age: {{ emp.Age }}</li>
+</ul>
+
+<h2>Search Employee by Eno</h2>
+<input type="number" [(ngModel)]="eno" />
+<button (click)="getEmployeeByEno()">Search</button>
+
+<div *ngIf="selectedEmp">
+  <p>Name: {{ selectedEmp.Ename }}</p>
+  <img [src]="selectedEmp.Ephoto" alt="Employee Photo" width="150" />
+</div>
+```
+
+5. **Enable Forms Module**
+In `app.module.ts`:
+```ts
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    FormsModule,
+    // ... other modules
+  ],
+})
+```
+
+---
+
+## ✅ Final Notes
+- Start MySQL server and create the `Emp` and `Company` tables.
+- Start backend: `node server.js`
+- Start frontend: `ng serve`
+- Make sure CORS is handled and your ports match.
+
+Let me know if you want this setup as a GitHub repo template or ZIP file.
