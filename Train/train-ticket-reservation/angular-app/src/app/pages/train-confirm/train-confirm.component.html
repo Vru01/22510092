@@ -1,0 +1,59 @@
+
+<!-- <div class="container-fluid pt-5 mb-5">
+  <div class="row justify-content-center"> -->
+    <div class="confirm-wrapper">
+      <div class="">
+        <h4 class="mb-3">Booking Confirmation</h4>
+        <hr/>
+        <div class="clearfix">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td>From</td>
+                <td class="font-weight-bold">{{trainInfo.startPoint | uppercase}}</td>
+              </tr>
+              <tr>
+                <td>To</td>
+                <td class="font-weight-bold">{{trainInfo.destPoint | uppercase}}</td>
+              </tr>
+              <tr>
+                <td>Train</td>
+                <td class="font-weight-bold">{{trainInfo.trainInfo.trainName | uppercase}} ({{trainInfo.trainNo}})</td>
+              </tr>
+              <tr>
+                <td>Boarding On</td>
+                <td class="font-weight-bold">{{pickedDate | date:'longDate'}}</td>
+              </tr>
+              <tr>
+                <td>Departure @</td>
+                <td class="font-weight-bold">{{trainInfo.departureTime}}</td>
+              </tr>
+              <tr>
+                <td>Arrival @</td>
+                <td class="font-weight-bold">{{trainInfo.arrivalTime}}</td>
+              </tr>
+              <tr>
+                <td>Fare</td>
+                <td class="font-weight-bold">Rs.{{trainInfo.fare}}</td>
+              </tr>
+              <tr>
+                <td>No. of Seat</td>
+                <td class="font-weight-bold">1</td>
+              </tr>
+              <tr>
+                <td>User name</td>
+                <td class="font-weight-bold">{{userData && userData.name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <span class="text-info">{{msg}}</span>
+      </div>
+      <div class="row justify-content-center">
+        <button (click)="confirmJourney()"class="btn btn-primary">Confirm Booking</button>
+      </div>
+    </div>
+  <!-- </div>
+</div> -->

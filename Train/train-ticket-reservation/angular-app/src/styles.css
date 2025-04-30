@@ -1,0 +1,74 @@
+.header-top {
+  background: #fff;
+  border-top: 3px solid green;
+}
+
+.login {
+  background: green;
+  color: #fff;
+  float: right;
+  padding: 3px 20px;
+  margin: 10px;
+}
+
+.header-top p {
+  float: right;
+}
+
+.header-top img {
+  width: 100px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.menu {
+  background: #adadbc;
+}
+
+.menu ul li {
+  padding: 10px 20px;
+  display: inline-block;
+  color: #fff;
+  cursor: pointer;
+}
+
+table {
+  border: 1px solid #dee2e6;
+}
+
+.top-1 {
+  margin-top: 150px !important;
+}
+
+.block {
+  background: #FBFBFB;
+  height: max-content;
+  padding: 35px;
+}
+
+.block li {
+  margin: 5px 0;
+}
+
+.font-weight-bold {
+  font-weight: 500!important;
+}
+
+.main-wrapper {
+  background: url(./assets/img/Talgo.jpg);
+  background-size: cover;
+  position: relative;
+  min-height: calc(100vh - 20px);
+  padding-top: 20px;
+}
+
+.modal-dialog {
+  max-width: 900px !important;
+}

@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row bg-white p-3">
+      <div class="col-sm-12">
+         <mat-tab-group color="primary" dynamicHeight mat-align-tabs="center" (selectedIndexChange)="changeTab($event)" [selectedIndex]="selectedTab">
+            <mat-tab label="Profile">
+               <div class="row m-auto p-3">
+                  <div class="col-md-6">
+                     <form [formGroup]="userProfileForm" (ngSubmit)="userForm()" >
+                        <div class="form-group">
+                           <label>Username</label>
+                           <input type="text" formControlName="name" class="form-control form-control-sm">
+                           <span *ngIf="submitted && userProfileForm.controls.name.errors"> 
+                              <span *ngIf="userProfileForm.controls.name.errors.required">Name Required</span>
+                              </span>
+                        </div>
+                        <div class="form-group">
+                           <label>Gender</label>
+                           <select type="text"  formControlName="gender" class="form-control form-control-sm">
+                              <option value="M">Male</option>
+                              <option value="F">Female</option>
+                           </select>
+                           <span *ngIf="submitted && userProfileForm.controls.gender.errors"> 
+                              <span *ngIf="userProfileForm.controls.gender.errors.required">Gender Required</span>
+                          </span>
+                        </div>
+                        <div class="form-group">
+                           <label>Phone</label>
+                           <input type="text"  formControlName="phone" class="form-control form-control-sm">
+                           <span *ngIf="submitted && userProfileForm.controls.phone.errors"> 
+                              <span *ngIf="userProfileForm.controls.phone.errors.required">Phone Required</span>
+                              <span *ngIf="userProfileForm.controls.phone.errors.pattern">10 digits phone number</span>
+                          </span>
+                        </div>
+                        <div class="form-group">
+                           <label>Email</label>
+                           <input type="email"  formControlName="email" class="form-control form-control-sm">
+                           <span *ngIf="submitted && userProfileForm.controls.email.errors"> 
+                              <span *ngIf="userProfileForm.controls.email.errors.required"> Email Required</span>
+                              <span *ngIf="userProfileForm.controls.email.errors.pattern">Invalid Email</span>
+                          </span>
+                        </div>
+                        <div class="form-group">
+                           <label>Password </label>
+                           <input type="password"  formControlName="password"  class="form-control form-control-sm">
+                           <span *ngIf="submitted && userProfileForm.controls.password.errors"> 
+                              <span *ngIf="userProfileForm.controls.password.errors.required"> Password Required</span>
+                              </span>
+                        </div>
+                        <div class="mx-1 my-2">
+                           <span class="text-info">{{successMsg && successMsg}}</span>
+                           <span class="text-danger">{{errMsg && errMsg}}</span>
+                        </div>
+                        <input type="submit" class="btn btn-sm btn-outline-primary" value="Update">
+                     </form>
+                  </div>
+               </div>
+            </mat-tab>
+            <mat-tab label="My Activity">
+               <div class="row m-auto">
+                  <div class="col-md-8 p-3">
+                     <h6 class="text-centet text-danger">{{actMsg && actMsg}}</h6>
+                     <div class="row">
+                        <div *ngFor="let item of activities" class="col-sm-12">
+                           <div class="mb-2 card">
+                              <ng-template [ngIf]="item.status === 1" [ngIfElse]="cancelledCard">
+                                 <div class="card-body">
+                                    <div class="card-title clearfix">
+                                          <div class="float-left text-uppercase">{{item.trainDetails[0] && item.trainDetails[0].trainName}}</div>
+                                          <div class="float-right">
+                                             <button class="btn btn-danger btn-outline btn-sm" (click)="cancelTicket(item._id)">Cancel Ticket</button>
+                                          </div>
+                                       </div>
+                                       <div class="card-subtitle font-weight-normal text-uppercase">
+                                          {{item.endPointsDetails.startPoint}} - {{item.endPointsDetails.destPoint}}
+                                       </div>
+                                       <div class="card-text">
+                                          <small class="d-block">Boarding Date: <b>{{item.bookingDate | date:'longDate'}} {{item.endPointsDetails.departureTime}}</b></small>
+                                          <small class="d-block">Arrival Time: <b>{{item.endPointsDetails.arrivalTime}}</b></small>
+                                          <span class="float-left large">Seat No: <b class="fs-20">{{item.seatNo}}</b></span>
+                                       </div>
+                                 </div>
+                              </ng-template>
+                              <ng-template #cancelledCard>
+                                 <div class="card-body bg-light">
+                                    <div class="card-title clearfix">
+                                          <div class="float-left text-uppercase">{{item.trainDetails[0] && item.trainDetails[0].trainName}}</div>
+                                          <div class="float-right">
+                                             <span class="text-danger">Cancelled</span>
+                                          </div>
+                                       </div>
+                                       <div class="card-text">
+                                          <span class="text-capitalize">{{item.endPointsDetails.startPoint}} - {{item.endPointsDetails.destPoint}}</span>
+                                          <small class="d-block">Boarding Date: {{item.bookingDate | date:'longDate'}} {{item.endPointsDetails.departureTime}}</small>
+                                       </div>
+                                 </div>
+                              </ng-template>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </mat-tab>
+         </mat-tab-group>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container mt-4 ">
+  <div class="row justify-content-center bg-color">
+    <div class="col-md-10">
+      <div class="mb-3">
+        <p><small>Results for</small></p>
+        <div class="text-capitalize">
+          <h6>{{selectedRoute.source}} - {{selectedRoute.destination}}</h6>
+          <small>Date:</small> {{selectedRoute.date | date:'longDate'}}
+        </div>
+      </div>
+      <hr/>
+   
+      <div class="row search-result pb-5">
+        <div class="col-sm-12 my-2">
+          <h5 *ngIf="trains.length > 0">{{trains.length}} Train(s)</h5>
+          <h5 *ngIf="trains.length <= 0" class="text-center">No results found!</h5>
+        </div>
+        <div *ngFor="let item of trains" class="col-sm-12">
+          <div class="mb-2 card">
+            <div class="card-body">
+                <div class="card-title clearfix">
+                    <div class="float-left text-uppercase">{{item.trainInfo.trainName}}</div>
+                    <div class="float-right">
+                      <ng-template #template>
+                        <div class="modal-body">
+                            <button type="button" class="close pull-right mr-3 mt-2" aria-label="Close" (click)="modalRef.hide()">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          <train-confirm (closeModal)="closeModal()" [pickedDate]="selectedRoute.date" [trainInfo]="item"></train-confirm>
+                        </div>
+                      </ng-template>
+                      <button (click)="openModal(template)" class="btn btn-primary btn-outline btn-sm">Book</button>
+                    </div>
+                </div>
+                <div class="card-subtitle font-weight-normal text-uppercase">
+                    {{item.startPoint}} - {{item.destPoint}}
+                </div>
+                <div class="card-text">
+                    <small class="d-block">Running On: <b>{{formatDays(item.trainInfo.days) | uppercase}}</b></small>
+                    <small class="d-block">Departure Time: <b>{{item.departureTime}}</b> Arrival Time: <b>{{item.arrivalTime}}</b></small>
+                    <div class="my-2 small clearfix">
+                        <span class="float-left large">Rs.<b class="fs-20">{{item.fare}}</b></span>
+                        <span class="float-right"><b class="fs-20">{{item.seatAvailability}}</b> seat(s) available.</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="overlap"></div>
+<div class="container">
+  <div class="row justify-content-center pb-5 pt-5" >
+    <div class="col-md-5 block mt-5">
+      <form [formGroup]="selectPoint" (ngSubmit)="SearchTrain()" >
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>From</label>
+            <select name="source" (change)="handleFromChange($event)" formControlName="source" class="form-control form-control-sm">
+              <option value="">From</option>
+              <option *ngFor="let source of sourceData" value="{{source}}">{{source | uppercase}}</option>
+            </select>
+            <span class="errors" *ngIf="submitted && points.source.errors"> 
+              <span *ngIf="points.source.errors.required">Start Point Required</span>
+          </span>
+          </div>
+          <div class="form-group col-md-6">
+            <label>To</label>
+            <select name="destination" formControlName="destination" class="form-control form-control-sm">
+              <option value="">To</option>
+              <option *ngFor="let dest of destinationData" value="{{dest}}">{{dest | uppercase}}</option>
+            </select>
+            <span class="errors" *ngIf="submitted && points.destination.errors"> 
+              <span *ngIf="points.destination.errors.required"> Destination Point Required</span>
+          </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="">Departing On</label>
+            <input type="date" formControlName="date" min={{defaultDate}} class="form-control form-control-sm" name="date" >
+            <span class="errors" *ngIf="submitted && points.date.errors"> 
+              <span *ngIf="points.date.errors.required"> Date Required</span>
+          </span>
+          </div>
+          
+        </div>
+        <button type="submit" class="btn btn-block mt-3 btn-search btn-sm"> <i class="fas mr-2 fa-search"></i> Search Trains</button>
+      </form>
+    </div>
+  </div>
+</div>

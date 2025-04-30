@@ -1,0 +1,463 @@
+{
+    "trains": [
+        {
+            "trainName": "Covai Express",
+            "trainNo": "COV01",
+            "days": "mon,wed,fri",
+            "totalSeats": "20"
+        },
+        {
+            "trainName": "Chennai Express",
+            "trainNo": "CHI01",
+            "days": "mon,sat",
+            "totalSeats": "20"
+        },
+        {
+            "trainName": "Pandi Express",
+            "trainNo": "PAN01",
+            "days": "wed,fri",
+            "totalSeats": "20"
+        },
+        {
+            "trainName": "Cheran Express",
+            "trainNo": "CHE01",
+            "days": "mon,tue,wed,thu,fri,sat,sun",
+            "totalSeats": "20"
+        }
+
+    ],
+    "trains-endpoints": [
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "karur",
+            "departureTime": "12:00",
+            "arrivalTime": "14:00",
+            "fare": "70",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "trichy",
+            "departureTime": "12:00",
+            "arrivalTime": "15:00",
+            "fare": "80",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "kumbakonam",
+            "departureTime": "12:00",
+            "arrivalTime": "17:00",
+            "fare": "100",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "thanjavur",
+            "departureTime": "12:00",
+            "arrivalTime": "19:00",
+            "fare": "130",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "karur",
+            "destPoint": "trichy",
+            "departureTime": "14:00",
+            "arrivalTime": "15:00",
+            "fare": "45",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "karur",
+            "destPoint": "kumbakonam",
+            "departureTime": "14:00",
+            "arrivalTime": "17:00",
+            "fare": "75",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "karur",
+            "destPoint": "thanjavur",
+            "departureTime": "14:00",
+            "arrivalTime": "19:00",
+            "fare": "100",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "trichy",
+            "destPoint": "kumbakonam",
+            "departureTime": "15:00",
+            "arrivalTime": "17:00",
+            "fare": "40",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "trichy",
+            "destPoint": "thanjavur",
+            "departureTime": "15:00",
+            "arrivalTime": "19:00",
+            "fare": "60",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "kumbakonam",
+            "destPoint": "thanjavur",
+            "departureTime": "17:00",
+            "arrivalTime": "19:00",
+            "fare": "40",
+            "trainNo": "COV01"
+        },
+        {
+            "startPoint": "chennai",
+            "destPoint": "selam",
+            "departureTime": "11:00",
+            "arrivalTime": "14:00",
+            "fare": "120",
+            "trainNo": "CHI01"
+        },
+        {
+            "startPoint": "chennai",
+            "destPoint": "erode",
+            "departureTime": "11:00",
+            "arrivalTime": "16:00",
+            "fare": "140",
+            "trainNo": "CHI01"
+        },
+        {
+            "startPoint": "chennai",
+            "destPoint": "coimbatore",
+            "departureTime": "11:00",
+            "arrivalTime": "18:00",
+            "fare": "160",
+            "trainNo": "CHI01"
+        },
+        {
+            "startPoint": "selam",
+            "destPoint": "erode",
+            "departureTime": "14:00",
+            "arrivalTime": "16:00",
+            "fare": "86",
+            "trainNo": "CHI01"
+        },
+        {
+            "startPoint": "selam",
+            "destPoint": "coimbatore",
+            "departureTime": "14:00",
+            "arrivalTime": "18:00",
+            "fare": "70",
+            "trainNo": "CHI01"
+        },
+        {
+            "startPoint": "erode",
+            "destPoint": "coimbatore",
+            "departureTime": "14:00",
+            "arrivalTime": "16:00",
+            "fare": "55",
+            "trainNo": "CHI01"
+        },
+        {
+            "startPoint": "puducherry",
+            "destPoint": "villupuram",
+            "departureTime": "05:30",
+            "arrivalTime": "07:00",
+            "fare": "160",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "puducherry",
+            "destPoint": "chengalpattu",
+            "departureTime": "07:00",
+            "arrivalTime": "09:00",
+            "fare": "196",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "puducherry",
+            "destPoint": "tambaram",
+            "departureTime": "09:00",
+            "arrivalTime": "10:35",
+            "fare": "210",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "puducherry",
+            "destPoint": "chennai",
+            "departureTime": "10:35",
+            "arrivalTime": "12:00",
+            "fare": "250",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "villupuram",
+            "destPoint": "chengalpattu",
+            "departureTime": "07:00",
+            "arrivalTime": "09:00",
+            "fare": "130",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "villupuram",
+            "destPoint": "tambaram",
+            "departureTime": "07:00",
+            "arrivalTime": "10:35",
+            "fare": "156",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "villupuram",
+            "destPoint": "chennai",
+            "departureTime": "07:00",
+            "arrivalTime": "12:00",
+            "fare": "170",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "chengalpattu",
+            "destPoint": "tambaram",
+            "departureTime": "09:00",
+            "arrivalTime": "10:35",
+            "fare": "130",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "chengalpattu",
+            "destPoint": "chennai",
+            "departureTime": "09:00",
+            "arrivalTime": "12:00",
+            "fare": "150",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "tambaram",
+            "destPoint": "chennai",
+            "departureTime": "10:35",
+            "arrivalTime": "12:00",
+            "fare": "120",
+            "trainNo": "PAN01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "tiruppur",
+            "departureTime": "03:10",
+            "arrivalTime": "04:00",
+            "fare": "70",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "erode",
+            "departureTime": "03:10",
+            "arrivalTime": "05:00",
+            "fare": "85",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "karur",
+            "departureTime": "03:10",
+            "arrivalTime": "06:00",
+            "fare": "100",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "trichy",
+            "departureTime": "03:10",
+            "arrivalTime": "08:00",
+            "fare": "120",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "thanjavur",
+            "departureTime": "03:10",
+            "arrivalTime": "11:00",
+            "fare": "180",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "nagapattinam",
+            "departureTime": "03:10",
+            "arrivalTime": "12:00",
+            "fare": "240",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "coimbatore",
+            "destPoint": "karaikal",
+            "departureTime": "03:10",
+            "arrivalTime": "13:00",
+            "fare": "300",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "tiruppur",
+            "destPoint": "erode",
+            "departureTime": "04:00",
+            "arrivalTime": "05:00",
+            "fare": "60",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "tiruppur",
+            "destPoint": "karur",
+            "departureTime": "04:00",
+            "arrivalTime": "06:00",
+            "fare": "80",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "tiruppur",
+            "destPoint": "trichy",
+            "departureTime": "04:00",
+            "arrivalTime": "08:00",
+            "fare": "100",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "tiruppur",
+            "destPoint": "thanjavur",
+            "departureTime": "04:00",
+            "arrivalTime": "11:00",
+            "fare": "110",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "tiruppur",
+            "destPoint": "nagapattinam",
+            "departureTime": "04:00",
+            "arrivalTime": "12:00",
+            "fare": "120",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "tiruppur",
+            "destPoint": "karaikal",
+            "departureTime": "04:00",
+            "arrivalTime": "13:00",
+            "fare": "145",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "erode",
+            "destPoint": "karur",
+            "departureTime": "05:00",
+            "arrivalTime": "06:00",
+            "fare": "80",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "erode",
+            "destPoint": "trichy",
+            "departureTime": "05:00",
+            "arrivalTime": "08:00",
+            "fare": "100",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "erode",
+            "destPoint": "thanjavur",
+            "departureTime": "05:00",
+            "arrivalTime": "11:00",
+            "fare": "110",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "erode",
+            "destPoint": "nagapattinam",
+            "departureTime": "04:00",
+            "arrivalTime": "12:00",
+            "fare": "120",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "erode",
+            "destPoint": "karaikal",
+            "departureTime": "05:00",
+            "arrivalTime": "13:00",
+            "fare": "145",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "karur",
+            "destPoint": "trichy",
+            "departureTime": "06:00",
+            "arrivalTime": "08:00",
+            "fare": "100",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "karur",
+            "destPoint": "thanjavur",
+            "departureTime": "06:00",
+            "arrivalTime": "11:00",
+            "fare": "110",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "karur",
+            "destPoint": "nagapattinam",
+            "departureTime": "06:00",
+            "arrivalTime": "12:00",
+            "fare": "120",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "karur",
+            "destPoint": "karaikal",
+            "departureTime": "06:00",
+            "arrivalTime": "13:00",
+            "fare": "145",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "trichy",
+            "destPoint": "thanjavur",
+            "departureTime": "08:00",
+            "arrivalTime": "11:00",
+            "fare": "110",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "trichy",
+            "destPoint": "nagapattinam",
+            "departureTime": "08:00",
+            "arrivalTime": "12:00",
+            "fare": "120",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "trichy",
+            "destPoint": "karaikal",
+            "departureTime": "08:00",
+            "arrivalTime": "13:00",
+            "fare": "145",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "thanjavur",
+            "destPoint": "nagapattinam",
+            "departureTime": "11:00",
+            "arrivalTime": "12:00",
+            "fare": "120",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "thanjavur",
+            "destPoint": "karaikal",
+            "departureTime": "11:00",
+            "arrivalTime": "13:00",
+            "fare": "145",
+            "trainNo": "CHE01"
+        },
+        {
+            "startPoint": "nagapattinam",
+            "destPoint": "karaikal",
+            "departureTime": "12:00",
+            "arrivalTime": "13:00",
+            "fare": "145",
+            "trainNo": "CHE01"
+        }
+    ]
+}

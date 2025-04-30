@@ -1,0 +1,14 @@
+.algin-2
+{
+    background: rgb(135, 135, 226) !important;
+    border: none !important;
+}
+span
+{
+    color: red;
+}
+a
+{
+    font-weight: 400;
+    text-decoration: none;
+}
